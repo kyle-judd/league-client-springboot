@@ -3,16 +3,17 @@ package com.kylejudd.leagueclient.com.kylejudd.leagueclient.DTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LeagueAccount {
+public class SummonerDTO {
 
     private String accountId;
     private int profileIconId;
     private long revisionDate;
     private String name;
+    private String id;
     private String puuid;
     private long summonerLevel;
 
-    public LeagueAccount() {
+    public SummonerDTO() {
 
     }
 
@@ -48,6 +49,14 @@ public class LeagueAccount {
         this.name = name;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getPuuid() {
         return puuid;
     }
@@ -66,11 +75,12 @@ public class LeagueAccount {
 
     @Override
     public String toString() {
-        return "LeagueAccount{" +
+        return "SummonerDTO{" +
                 "accountId='" + accountId + '\'' +
                 ", profileIconId=" + profileIconId +
                 ", revisionDate=" + revisionDate +
                 ", name='" + name + '\'' +
+                ", id='" + id + '\'' +
                 ", puuid='" + puuid + '\'' +
                 ", summonerLevel=" + summonerLevel +
                 '}';
