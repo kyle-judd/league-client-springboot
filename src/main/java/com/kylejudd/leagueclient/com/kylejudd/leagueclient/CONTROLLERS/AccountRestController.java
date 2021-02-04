@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("/riot/account/v1")
+@RequestMapping("/riot/account/v1/")
 public class AccountRestController {
 
     private WebClient webClient;
@@ -21,13 +21,13 @@ public class AccountRestController {
         this.webClient = webClient;
     }
 
-    @GetMapping("/accounts/by-puuid/{puuid}/{apiKey}")
+    @GetMapping("accounts/by-puuid/{puuid}/{apiKey}")
     public Mono<ResponseEntity<AccountDTO>> getAccountByPuuid(@PathVariable String puuid, @PathVariable String apiKey) {
         final String URI = "https://americas.api.riotgames.com/riot/account/v1/accounts/by-puuid/" + puuid + "?api_key=" + apiKey;
         return webClient.get().uri(URI).retrieve().toEntity(AccountDTO.class);
     }
 
-    @GetMapping("/accounts/by-riot-id/{gameName}/{tagLine}/{apiKey}")
+    @GetMapping("accounts/by-riot-id/{gameName}/{tagLine}/{apiKey}")
     public Mono<ResponseEntity<AccountDTO>> getAccountByGameNameAndTagline(@PathVariable String gameName, @PathVariable String tagLine, @PathVariable String apiKey) {
         final String URI = "https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + gameName + "/" + tagLine + "?api_key=" + apiKey;
         return webClient.get().uri(URI).retrieve().toEntity(AccountDTO.class);
